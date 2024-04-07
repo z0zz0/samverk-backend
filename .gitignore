@@ -17,15 +17,6 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
-
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
@@ -33,9 +24,10 @@ out/
 /nbdist/
 /.nb-gradle/
 
-### VS Code ###
-.vscode/
+### META-INF ###
+*/META-INF/*
 
+### FRONTEND ###
 # Compiled output
 frontend/dist
 frontend/tmp
@@ -46,23 +38,6 @@ frontend/bazel-out
 frontend/node_modules
 frontend/npm-debug.log
 frontend/yarn-error.log
-
-# IDEs and editors
-.idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.history/*
 
 # Miscellaneous
 frontend/.angular/cache
@@ -76,3 +51,29 @@ frontend/typings
 # System files
 .DS_Store
 Thumbs.db
+
+### IDEs and editors ###
+# IntelliJ IDEA
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# editors
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
