@@ -1,0 +1,23 @@
+# Use an OpenJDK base image with Maven
+FROM maven:3.6.3-openjdk-11 as builder
+
+# Copy the project files to the container
+COPY ./backend /usr/src/myapp
+
+# Set the working directory
+WORKDIR /usr/src/myapp
+
+# Build the application
+RUN mvn clean package
+
+# Use OpenJDK for the runtime
+FROM openjdk:11-jre-slim
+
+# Copy the built application from the previous stage
+COPY --from=builder /usr/src/myapp/target/myapp.jar /usr/app/myapp.jar
+
+# Set the working directory for the application
+WORKDIR /usr/app
+
+# Command to run the application
+CMD ["java", "-jar", "myapp.jar"]
