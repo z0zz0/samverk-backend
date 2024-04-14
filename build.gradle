@@ -18,7 +18,7 @@ springBoot {
 sourceSets {
     main {
         java {
-            srcDirs 'backend/src/main/java/com/samverk'
+            srcDirs 'backend/src/main/java'
         }
     }
 }
@@ -39,7 +39,7 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	
 	// Add jakarta annotation
-	implementation 'jakarta.annotation:jakarta.annotation-api:2.1.1'
+	implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0-M1'
 
 	// Exclude the default logging dependencies
     implementation("org.springframework.boot:spring-boot-starter-logging") {

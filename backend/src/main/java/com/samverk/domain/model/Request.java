@@ -28,6 +28,10 @@ public class Request {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "answer_approved_id")
+    private Answer approvedAnswer;
 
     @Column(nullable = false)
     private String requestType;

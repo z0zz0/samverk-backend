@@ -31,7 +31,7 @@ CREATE TABLE organization (
 );
 
 -- Create user table
-CREATE TABLE "user" (
+CREATE TABLE user (
     user_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     organization_id UUID NOT NULL,
     social_identity_number VARCHAR(13) UNIQUE NOT NULL,
@@ -61,7 +61,7 @@ CREATE TABLE user_role (
     user_id UUID NOT NULL,
     role_id INT NOT NULL,
     PRIMARY KEY (user_id, role_id),
-    FOREIGN KEY (user_id) REFERENCES "user"(user_id),
+    FOREIGN KEY (user_id) REFERENCES user(user_id),
     FOREIGN KEY (role_id) REFERENCES role(role_id)
 );
 
@@ -76,7 +76,8 @@ CREATE TABLE request (
     end_time TIMESTAMP NOT NULL,
     answer_expiration_time TIMESTAMP,
     creation_time TIMESTAMP NOT NULL DEFAULT NOW(),
-    FOREIGN KEY (user_id) REFERENCES "user"(user_id)
+    FOREIGN KEY (answer_approved_id) REFERENCES answer(answer_id),
+    FOREIGN KEY (user_id) REFERENCES user(user_id)
 );
 
 -- Create answer table
@@ -85,9 +86,10 @@ CREATE TABLE answer (
     request_id UUID NOT NULL,
     user_id UUID NOT NULL,
     answer_type VARCHAR(10) NOT NULL,
+    updated_time TIMESTAMP,
     creation_time TIMESTAMP NOT NULL DEFAULT NOW(),
     FOREIGN KEY (request_id) REFERENCES request(request_id),
-    FOREIGN KEY (user_id) REFERENCES "user"(user_id)
+    FOREIGN KEY (user_id) REFERENCES user(user_id)
 );
 
 -- Create organization_relationship table

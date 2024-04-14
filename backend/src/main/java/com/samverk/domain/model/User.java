@@ -10,14 +10,19 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.JoinColumn;
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.FetchType;
 import org.hibernate.annotations.GenericGenerator;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
+import java.util.Set;
+import java.util.HashSet;
 
 @Getter
 @Setter
@@ -77,4 +82,17 @@ public class User {
     @Setter(AccessLevel.NONE)
     @Column(updatable = false, nullable = false, insertable = false, columnDefinition = "TIMESTAMP")
     private LocalDateTime creationTime;
+
+    @Nonnull
+    @ManyToMany
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
+    @Nonnull
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<Answer> answers = new HashSet<>();
+
+    @Nonnull
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<Request> requests = new HashSet<>();
 }
