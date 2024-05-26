@@ -45,10 +45,6 @@ public class User {
     private String socialIdentityNumber;
 
     @NonNull
-    @Column(unique = true, nullable = false)
-    private String username;
-
-    @NonNull
     @Column(nullable = false)
     private String passwordHash;
 
