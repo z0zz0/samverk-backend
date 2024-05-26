@@ -6,8 +6,6 @@ plugins {
 }
 
 group = 'com.samverk'
-version = '1.0.0'
-sourceCompatibility = '21'
 
 repositories {
     mavenCentral()
@@ -57,4 +55,9 @@ sourceSets {
             srcDirs = ['backend/src/test/resources']
         }
     }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
