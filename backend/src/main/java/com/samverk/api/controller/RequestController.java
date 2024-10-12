@@ -1,4 +1,4 @@
-package com.samverk.controller;
+package com.samverk.api.controller;
 
 import com.samverk.application.RequestService;
 import com.samverk.domain.entity.Request;
