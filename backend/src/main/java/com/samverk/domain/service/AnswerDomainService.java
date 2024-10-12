@@ -1,6 +1,6 @@
 package com.samverk.domain.service;
 
-import com.samverk.domain.model.Answer;
+import com.samverk.domain.entity.Answer;
 import com.samverk.domain.repository.AnswerRepository;
 import com.samverk.util.Log;
 import org.springframework.cache.annotation.Cacheable;

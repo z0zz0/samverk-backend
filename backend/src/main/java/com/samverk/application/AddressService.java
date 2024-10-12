@@ -1,6 +1,6 @@
 package com.samverk.application;
 
-import com.samverk.domain.model.Address;
+import com.samverk.domain.entity.Address;
 import com.samverk.domain.service.AddressDomainService;
 import org.springframework.stereotype.Service;
 

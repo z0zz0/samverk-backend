@@ -1,6 +1,6 @@
 package com.samverk.domain.service;
 
-import com.samverk.domain.model.Role;
+import com.samverk.domain.entity.Role;
 import com.samverk.domain.repository.RoleRepository;
 import com.samverk.util.Log;
 import org.springframework.stereotype.Service;

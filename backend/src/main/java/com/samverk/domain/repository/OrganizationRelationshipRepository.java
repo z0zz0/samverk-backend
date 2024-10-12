@@ -2,8 +2,9 @@ package com.samverk.domain.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.samverk.domain.model.OrganizationRelationship;
-import com.samverk.domain.model.OrganizationRelationship.OrganizationRelationshipId;
+
+import com.samverk.domain.entity.OrganizationRelationship;
+import com.samverk.domain.entity.OrganizationRelationship.OrganizationRelationshipId;
 
 import java.util.UUID;
 import java.util.List;

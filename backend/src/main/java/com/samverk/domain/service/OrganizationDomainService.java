@@ -1,6 +1,6 @@
 package com.samverk.domain.service;
 
-import com.samverk.domain.model.Organization;
+import com.samverk.domain.entity.Organization;
 import com.samverk.domain.repository.OrganizationRepository;
 import com.samverk.util.Log;
 import org.springframework.stereotype.Service;

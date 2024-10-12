@@ -1,7 +1,8 @@
 package com.samverk.controller;
 
 import com.samverk.application.AnswerService;
-import com.samverk.domain.model.Answer;
+import com.samverk.domain.entity.Answer;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

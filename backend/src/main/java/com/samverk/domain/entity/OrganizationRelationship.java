@@ -1,4 +1,4 @@
-package com.samverk.domain.model;
+package com.samverk.domain.entity;
 
 import lombok.Getter;
 import lombok.Setter;

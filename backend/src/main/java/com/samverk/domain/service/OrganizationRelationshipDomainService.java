@@ -7,7 +7,7 @@
  */
 package com.samverk.domain.service;
 
-import com.samverk.domain.model.OrganizationRelationship;
+import com.samverk.domain.entity.OrganizationRelationship;
 import com.samverk.domain.repository.OrganizationRelationshipRepository;
 import com.samverk.util.Log;
 import com.samverk.util.ErrorMessage;

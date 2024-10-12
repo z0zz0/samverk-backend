@@ -1,6 +1,6 @@
 package com.samverk.security;
 
-import com.samverk.domain.model.User;
+import com.samverk.domain.entity.User;
 import com.samverk.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

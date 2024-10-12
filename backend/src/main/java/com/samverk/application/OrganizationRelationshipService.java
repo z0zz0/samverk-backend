@@ -1,6 +1,6 @@
 package com.samverk.application;
 
-import com.samverk.domain.model.OrganizationRelationship;
+import com.samverk.domain.entity.OrganizationRelationship;
 import com.samverk.domain.service.OrganizationRelationshipDomainService;
 import org.springframework.stereotype.Service;
 

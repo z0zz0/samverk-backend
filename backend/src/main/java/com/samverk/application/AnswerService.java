@@ -1,6 +1,6 @@
 package com.samverk.application;
 
-import com.samverk.domain.model.Answer;
+import com.samverk.domain.entity.Answer;
 import com.samverk.domain.service.AnswerDomainService;
 import org.springframework.stereotype.Service;
 

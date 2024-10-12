@@ -1,6 +1,6 @@
 package com.samverk.application;
 
-import com.samverk.domain.model.User;
+import com.samverk.domain.entity.User;
 import com.samverk.domain.service.UserDomainService;
 import org.springframework.stereotype.Service;
 

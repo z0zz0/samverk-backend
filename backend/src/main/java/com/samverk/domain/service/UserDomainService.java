@@ -1,6 +1,6 @@
 package com.samverk.domain.service;
 
-import com.samverk.domain.model.User;
+import com.samverk.domain.entity.User;
 import com.samverk.domain.repository.UserRepository;
 import com.samverk.util.Log;
 import com.samverk.util.ErrorMessage;

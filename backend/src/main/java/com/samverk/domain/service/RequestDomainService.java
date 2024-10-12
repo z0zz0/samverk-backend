@@ -1,6 +1,6 @@
 package com.samverk.domain.service;
 
-import com.samverk.domain.model.Request;
+import com.samverk.domain.entity.Request;
 import com.samverk.domain.repository.RequestRepository;
 import com.samverk.util.Log;
 import org.springframework.stereotype.Service;

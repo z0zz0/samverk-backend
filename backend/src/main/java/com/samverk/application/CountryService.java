@@ -1,6 +1,6 @@
 package com.samverk.application;
 
-import com.samverk.domain.model.Country;
+import com.samverk.domain.entity.Country;
 import com.samverk.domain.service.CountryDomainService;
 import org.springframework.stereotype.Service;
 
