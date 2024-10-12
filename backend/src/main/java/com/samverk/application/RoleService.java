@@ -18,7 +18,7 @@ public class RoleService {
         return roleDomainService.getAllRoles();
     }
 
-    public Role getRoleById(Long roleId) {
+    public Role getRoleById(int roleId) {
         return roleDomainService.getRoleById(roleId);
     }
 
@@ -26,11 +26,11 @@ public class RoleService {
         return roleDomainService.createRole(role);
     }
 
-    public Role updateRole(Long roleId, Role roleDetails) {
+    public Role updateRole(int roleId, Role roleDetails) {
         return roleDomainService.updateRole(roleId, roleDetails);
     }
 
-    public void deleteRole(Long roleId) {
+    public void deleteRole(int roleId) {
         roleDomainService.deleteRole(roleId);
     }
 }

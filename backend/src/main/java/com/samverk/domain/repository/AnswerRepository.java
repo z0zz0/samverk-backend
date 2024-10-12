@@ -10,6 +10,5 @@ import java.util.List;
 
 @Repository
 public interface AnswerRepository extends JpaRepository<Answer, UUID> {
-    // Find answers related to a specific request
-    List<Answer> findByRequestId(UUID requestId);
+    List<Answer> findByRequest_RequestId(UUID requestId);
 }

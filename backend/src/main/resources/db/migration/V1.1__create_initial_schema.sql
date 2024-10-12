@@ -1,14 +1,11 @@
--- Enable UUID extension
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-
 -- Create country table
-CREATE TABLE country (
+CREATE TABLE IF NOT EXISTS country (
     country_code VARCHAR(2) PRIMARY KEY,
     country_name VARCHAR(50) NOT NULL
 );
 
 -- Create address table
-CREATE TABLE address (
+CREATE TABLE IF NOT EXISTS address (
     address_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     country_code VARCHAR(2) NOT NULL,
     street_address VARCHAR(50) NOT NULL,
@@ -20,7 +17,7 @@ CREATE TABLE address (
 );
 
 -- Create organization table
-CREATE TABLE organization (
+CREATE TABLE IF NOT EXISTS organization (
     organization_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     organization_number VARCHAR(25) UNIQUE NOT NULL,
     organization_type VARCHAR(25) NOT NULL,
@@ -31,7 +28,7 @@ CREATE TABLE organization (
 );
 
 -- Create users table
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
     user_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     organization_id UUID NOT NULL,
     social_identity_number VARCHAR(13) UNIQUE NOT NULL,
@@ -50,13 +47,13 @@ CREATE TABLE users (
 );
 
 -- Create role table
-CREATE TABLE role (
+CREATE TABLE IF NOT EXISTS role (
     role_id SERIAL PRIMARY KEY,
     role VARCHAR(25) NOT NULL
 );
 
 -- Create user_role table
-CREATE TABLE user_role (
+CREATE TABLE IF NOT EXISTS user_role (
     user_id UUID NOT NULL,
     role_id INT NOT NULL,
     PRIMARY KEY (user_id, role_id),
@@ -65,7 +62,7 @@ CREATE TABLE user_role (
 );
 
 -- Create request table (before answer table)
-CREATE TABLE request (
+CREATE TABLE IF NOT EXISTS request (
     request_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     user_id UUID NOT NULL,
     answer_approved_id UUID,
@@ -79,7 +76,7 @@ CREATE TABLE request (
 );
 
 -- Create answer table (after request table)
-CREATE TABLE answer (
+CREATE TABLE IF NOT EXISTS answer (
     answer_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     request_id UUID NOT NULL,
     user_id UUID NOT NULL,
@@ -91,7 +88,7 @@ CREATE TABLE answer (
 );
 
 -- Create organization_relationship table
-CREATE TABLE organization_relationship (
+CREATE TABLE IF NOT EXISTS organization_relationship (
     contractor_id UUID NOT NULL,
     subcontractor_id UUID NOT NULL,
     creation_time TIMESTAMP NOT NULL DEFAULT NOW(),

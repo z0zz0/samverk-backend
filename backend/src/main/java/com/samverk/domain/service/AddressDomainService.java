@@ -40,11 +40,14 @@ public class AddressDomainService {
     @Transactional
     public Address updateAddress(UUID addressId, Address addressDetails) {
         Log.info("Updating address with id: " + addressId);
+
         Address address = getAddressById(addressId);
+        
         address.setStreetAddress(addressDetails.getStreetAddress());
         address.setPostalCode(addressDetails.getPostalCode());
         address.setMunicipality(addressDetails.getMunicipality());
         address.setStateProvince(addressDetails.getStateProvince());
+
         return addressRepository.save(address);
     }
 

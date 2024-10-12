@@ -22,7 +22,7 @@ public class RoleController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Role> getRoleById(@PathVariable Long id) {
+    public ResponseEntity<Role> getRoleById(@PathVariable int id) {
         return ResponseEntity.ok(roleService.getRoleById(id));
     }
 
@@ -32,12 +32,12 @@ public class RoleController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Role> updateRole(@PathVariable Long id, @RequestBody Role roleDetails) {
+    public ResponseEntity<Role> updateRole(@PathVariable int id, @RequestBody Role roleDetails) {
         return ResponseEntity.ok(roleService.updateRole(id, roleDetails));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteRole(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteRole(@PathVariable int id) {
         roleService.deleteRole(id);
         return ResponseEntity.noContent().build();
     }

@@ -21,7 +21,7 @@ public class RoleDomainService {
         return roleRepository.findAll();
     }
 
-    public Role getRoleById(Long roleId) {
+    public Role getRoleById(int roleId) {
         Log.info("Fetching role with id: " + roleId);
         return roleRepository.findById(roleId)
                 .orElseThrow(() -> {
@@ -37,7 +37,7 @@ public class RoleDomainService {
     }
 
     @Transactional
-    public Role updateRole(Long roleId, Role roleDetails) {
+    public Role updateRole(int roleId, Role roleDetails) {
         Log.info("Updating role with id: " + roleId);
         Role role = getRoleById(roleId);
         role.setRole(roleDetails.getRole());
@@ -45,7 +45,7 @@ public class RoleDomainService {
     }
 
     @Transactional
-    public void deleteRole(Long roleId) {
+    public void deleteRole(int roleId) {
         Log.info("Deleting role with id: " + roleId);
         roleRepository.deleteById(roleId);
     }

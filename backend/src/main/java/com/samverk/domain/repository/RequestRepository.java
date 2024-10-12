@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface RequestRepository extends JpaRepository<Request, UUID> {
     // Find requests by the user who made them
-    List<Request> findByUserId(UUID userId);
+    List<Request> findByUser_UserId(UUID userId);
 }

@@ -61,6 +61,6 @@ public class AnswerDomainService {
     @Cacheable(value = "answersByRequest", key = "#requestId")
     public List<Answer> getAnswersByRequestId(UUID requestId) {
         Log.info("Fetching answers for request id: " + requestId);
-        return answerRepository.findByRequestId(requestId);
+        return answerRepository.findByRequest_RequestId(requestId);
     }
 }

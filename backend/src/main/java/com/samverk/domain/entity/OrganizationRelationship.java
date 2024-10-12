@@ -13,26 +13,32 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Column;
 
+import java.util.Objects;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Objects;
 import java.util.UUID;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "contractor_id", "subcontractor_id" }) })
 @IdClass(OrganizationRelationship.OrganizationRelationshipId.class)
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "contractor_id", "subcontractor_id" }) })
 public class OrganizationRelationship {
     @Id
-    @ManyToOne
-    @JoinColumn(name = "contractor_id", nullable = false)
-    private Organization contractor;
+    @Column(name = "contractor_id")
+    private UUID contractorId;
 
     @Id
+    @Column(name = "subcontractor_id")
+    private UUID subcontractorId;
+
     @ManyToOne
-    @JoinColumn(name = "subcontractor_id", nullable = false)
+    @JoinColumn(name = "contractor_id", insertable = false, updatable = false)
+    private Organization contractor;
+
+    @ManyToOne
+    @JoinColumn(name = "subcontractor_id", insertable = false, updatable = false)
     private Organization subcontractor;
     
     @Setter(AccessLevel.NONE)

@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface AddressRepository extends JpaRepository<Address, UUID> {
     // Find addresses by country code if relevant
-    List<Address> findByCountryCode(String countryCode);
+    List<Address> findByCountry_CountryCode(String countryCode);
 }

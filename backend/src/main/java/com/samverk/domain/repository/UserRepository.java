@@ -11,6 +11,9 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User, UUID> {
     // Find users by their associated organization
-    List<User> findByOrganizationId(UUID organizationId);
+    List<User> findByOrganization_OrganizationId(UUID organizationId);
+
+    User findByUserId(UUID userId);
+
     User findByEmail(String email);
 }

@@ -21,12 +21,13 @@ import com.samverk.util.Log;
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     private final CustomUserDetailsService customUserDetailsService;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public CustomAuthenticationProvider(CustomUserDetailsService customUserDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    public CustomAuthenticationProvider(CustomUserDetailsService customUserDetailsService) {
         this.customUserDetailsService = customUserDetailsService;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @Override
