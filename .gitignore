@@ -62,6 +62,9 @@ out/
 .vscode/*
 .history/*
 
+#Visual Studio
+.vs/*
+
 # editors
 .project
 .classpath

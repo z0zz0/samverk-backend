@@ -1,6 +1,6 @@
 package com.samverk.controller;
 
-import com.samverk.service.CountryService;
+import com.samverk.application.CountryService;
 import com.samverk.domain.model.Country;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

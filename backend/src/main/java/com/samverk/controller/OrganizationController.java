@@ -1,6 +1,6 @@
 package com.samverk.controller;
 
-import com.samverk.service.OrganizationService;
+import com.samverk.application.OrganizationService;
 import com.samverk.domain.model.Organization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -8,6 +8,10 @@ import com.samverk.domain.model.OrganizationRelationship.OrganizationRelationshi
 import java.util.UUID;
 import java.util.List;
 
+/**
+ * Repository interface for managing organization relationships.
+ * Provides methods to find organization relationships by contractor ID and subcontractor ID.
+ */
 @Repository
 public interface OrganizationRelationshipRepository extends JpaRepository<OrganizationRelationship, OrganizationRelationshipId> {
     List<OrganizationRelationship> findByContractorId(UUID contractorId);

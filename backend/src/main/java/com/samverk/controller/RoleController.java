@@ -1,6 +1,6 @@
 package com.samverk.controller;
 
-import com.samverk.service.RoleService;
+import com.samverk.application.RoleService;
 import com.samverk.domain.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

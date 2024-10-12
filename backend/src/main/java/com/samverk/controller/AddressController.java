@@ -1,6 +1,6 @@
 package com.samverk.controller;
 
-import com.samverk.service.AddressService;
+import com.samverk.application.AddressService;
 import com.samverk.domain.model.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

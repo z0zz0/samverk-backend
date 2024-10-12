@@ -10,16 +10,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.JoinColumn;
-import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
+import jakarta.annotation.Nonnull;
 import org.hibernate.annotations.GenericGenerator;
 import java.time.LocalDateTime;
 import java.util.UUID;
-
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED) // JPA compatibility
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @RequiredArgsConstructor
 @Entity
 public class Answer {
@@ -43,9 +42,11 @@ public class Answer {
     private String answerType;
 
     @Column
-    private LocalDateTime updated_time;
+    private LocalDateTime updatedTime;
 
     @Setter(AccessLevel.NONE)
-    @Column(updatable = false, nullable = false, insertable = false, columnDefinition = "TIMESTAMP")
+    @Column(updatable = false, nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime creationTime;
+
+    // Domain logic methods can be added here
 }
