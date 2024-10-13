@@ -29,7 +29,7 @@ public class Address {
     private UUID addressId;
 
     @NonNull
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "country_code", nullable = false)
     private Country country;
 

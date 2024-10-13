@@ -2,6 +2,7 @@ package com.samverk.api.controller;
 
 import com.samverk.application.OrganizationService;
 import com.samverk.domain.entity.Organization;
+import com.samverk.dto.OrganizationDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/organizations")
 public class OrganizationController {
+    
     @Autowired
     private OrganizationService organizationService;
 
@@ -20,15 +22,15 @@ public class OrganizationController {
     public List<Organization> getAllOrganizations() {
         return organizationService.getAllOrganizations();
     }
+    
+    @PostMapping
+    public ResponseEntity<Organization> createOrganization(@RequestBody OrganizationDTO organization) {
+        return new ResponseEntity<>(organizationService.createOrganization(organization), HttpStatus.CREATED);
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Organization> getOrganizationById(@PathVariable UUID id) {
         return ResponseEntity.ok(organizationService.getOrganizationById(id));
-    }
-
-    @PostMapping
-    public ResponseEntity<Organization> createOrganization(@RequestBody Organization organization) {
-        return new ResponseEntity<>(organizationService.createOrganization(organization), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")

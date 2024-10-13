@@ -18,4 +18,7 @@ public class Country {
 
     @Column(nullable = false)
     private String countryName;
+
+    @Column(nullable = true)
+    private String countryPhonePrefix;
 }

@@ -40,10 +40,13 @@ public class OrganizationDomainService {
     @Transactional
     public Organization updateOrganization(UUID organizationId, Organization organizationDetails) {
         Log.info("Updating organization with id: " + organizationId);
+
         Organization organization = getOrganizationById(organizationId);
+        
         organization.setOrganizationNumber(organizationDetails.getOrganizationNumber());
         organization.setOrganizationType(organizationDetails.getOrganizationType());
         organization.setOrganizationName(organizationDetails.getOrganizationName());
+
         return organizationRepository.save(organization);
     }
 

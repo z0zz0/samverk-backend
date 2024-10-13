@@ -4,7 +4,6 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,13 +20,11 @@ import com.samverk.util.Log;
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     private final CustomUserDetailsService customUserDetailsService;
-
-    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @Autowired
-    public CustomAuthenticationProvider(CustomUserDetailsService customUserDetailsService) {
+    public CustomAuthenticationProvider(CustomUserDetailsService customUserDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.customUserDetailsService = customUserDetailsService;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @Override

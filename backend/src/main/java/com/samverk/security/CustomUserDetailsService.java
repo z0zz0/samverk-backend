@@ -11,7 +11,6 @@ import com.samverk.util.ErrorMessage;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
-
     @Autowired
     private UserRepository userRepository;
 

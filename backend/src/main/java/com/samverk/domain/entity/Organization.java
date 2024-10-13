@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
 import org.hibernate.annotations.GenericGenerator;
@@ -44,7 +45,7 @@ public class Organization {
     private String organizationName;
     
     @NonNull
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id", nullable = false)
     private Address address;
     

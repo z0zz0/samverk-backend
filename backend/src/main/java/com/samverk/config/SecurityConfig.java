@@ -1,6 +1,5 @@
 package com.samverk.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -31,7 +30,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/api/**").authenticated() // Protect API endpoints
+                        .requestMatchers("/api/**").permitAll() // Protect API endpoints
                         .anyRequest().permitAll() // Allow public access to other endpoints
                 )
                 .formLogin(form -> form
@@ -48,7 +47,6 @@ public class SecurityConfig {
         return http.build();
     }
     
-    @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoderConfig.bCryptPasswordEncoder());
         auth.authenticationProvider(customAuthenticationProvider);

@@ -2,6 +2,9 @@ package com.samverk.application;
 
 import com.samverk.domain.entity.Organization;
 import com.samverk.domain.service.OrganizationDomainService;
+import com.samverk.dto.OrganizationDTO;
+import com.samverk.mapper.OrganizationMapper;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +13,11 @@ import java.util.UUID;
 @Service
 public class OrganizationService {
     private final OrganizationDomainService organizationDomainService;
-
-    public OrganizationService(OrganizationDomainService organizationDomainService) {
+    private final OrganizationMapper organizationMapper;
+    
+    public OrganizationService(OrganizationDomainService organizationDomainService, OrganizationMapper organizationMapper) {
         this.organizationDomainService = organizationDomainService;
+        this.organizationMapper = organizationMapper;
     }
 
     public List<Organization> getAllOrganizations() {
@@ -23,8 +28,8 @@ public class OrganizationService {
         return organizationDomainService.getOrganizationById(organizationId);
     }
 
-    public Organization createOrganization(Organization organization) {
-        return organizationDomainService.createOrganization(organization);
+    public Organization createOrganization(OrganizationDTO organization) {
+        return organizationDomainService.createOrganization(organizationMapper.toEntity(organization));
     }
 
     public Organization updateOrganization(UUID organizationId, Organization organizationDetails) {

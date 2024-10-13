@@ -1,7 +1,8 @@
 -- Create country table
 CREATE TABLE IF NOT EXISTS country (
     country_code VARCHAR(2) PRIMARY KEY,
-    country_name VARCHAR(50) NOT NULL
+    country_name VARCHAR(100) NOT NULL,
+    country_phone_prefix VARCHAR(10)
 );
 
 -- Create address table
