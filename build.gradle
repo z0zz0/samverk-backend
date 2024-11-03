@@ -1,55 +1,94 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.2.4'
-	id 'io.spring.dependency-management' version '1.1.4'
-	
-	// Add lombok plugin
-	id "io.freefair.lombok" version "8.6"
+    id 'java'
+    id 'org.springframework.boot' version '3.2.4'
+    id 'io.spring.dependency-management' version '1.1.4'
+    id 'io.freefair.lombok' version '8.6'
+    id 'org.flywaydb.flyway' version '9.22.3'
 }
 
-java {
-	sourceCompatibility = '21'
+group = 'com.samverk'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    all*.exclude group: 'org.apache.logging.log4j', module: 'log4j-to-slf4j'
+    all*.exclude group: 'ch.qos.logback', module: 'logback-classic'
+}
+
+dependencies {
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.security:spring-security-config'
+    implementation 'org.springframework.security:spring-security-web'
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'org.postgresql:postgresql:42.7.3'
+    implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0-M1'
+    implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+    implementation('org.springframework.boot:spring-boot-starter') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+}
+
+task updateWrapper(type: Wrapper) {
+    gradleVersion = '8.7'
+    distributionType = Wrapper.DistributionType.ALL
+    validateDistributionUrl = true
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+tasks.named('build') {
+    dependsOn updateWrapper
 }
 
 springBoot {
-    mainClass = 'samverk.SamverkWebApplication'
+    mainClass = 'com.samverk.SamverkBackend'
 }
 
 sourceSets {
     main {
         java {
-            srcDirs 'backend/src/main/java/com/samverk'
+            srcDirs = ['src/main/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['src/test/java']
+        }
+        resources {
+            srcDirs = ['src/test/resources']
         }
     }
 }
 
-repositories {
-	mavenCentral()
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.flywaydb:flyway-core'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'org.postgresql:postgresql'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
-	
-	// Add jakarta annotation
-	implementation 'jakarta.annotation:jakarta.annotation-api:2.1.1'
-
-	// Exclude the default logging dependencies
-    implementation("org.springframework.boot:spring-boot-starter-logging") {
-        exclude group: "org.springframework.boot", module: "spring-boot-starter-logging"
-    }
-    
-    // Add the logging framework dependency
-    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
-}
-
-tasks.named('test') {
-	useJUnitPlatform()
+flyway {
+    url = System.getenv('DB_URL') ?: 'jdbc:postgresql://localhost:5433/samverk'
+    user = System.getenv('DB_USER') ?: 'postgres'
+    password = System.getenv('DB_PASSWORD') ?: 'postgres'
+    schemas = ['samverk']
+    locations = ['classpath:db/migration']
+    cleanDisabled = true
 }
